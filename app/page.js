@@ -19,25 +19,25 @@ export default function Home() {
     gender: "female",
     phone: "9973203577",
   };
-
   const foodItems = {
     pizza: [
-      { name: "Margherita", price: "100" },
-      { name: "Pepperoni", price: "210" },
+      { name: "Margherita", price: "₹100" },
+      { name: "Pepperoni", price: "₹210" },
     ],
     momo: [
-      { name: "Steamed Momo", price: "8 5" },
-      { name: "Fried Momo", price: "66" },
+      { name: "Steamed Momo", price: "₹85" },
+      { name: "Fried Momo", price: "₹66" },
     ],
     chickenCurry: [
-      { name: "Spicy Chicken Curry", price: "$12" },
-      { name: "Mild Chicken Curry", price: "$11" },
+      { name: "Spicy Chicken Curry", price: "₹120" },
+      { name: "Mild Chicken Curry", price: "₹110" },
     ],
     burger: [
-      { name: "Cheese Burger", price: "$7" },
-      { name: "Veggie Burger", price: "$6" },
+      { name: "Cheese Burger", price: "₹70" },
+      { name: "Veggie Burger", price: "₹60" },
     ],
   };
+
 
   const getGenderEmoji = (gender) => (gender === "Male" ? "👨" : "👩");
     const handleOrder = (e) => {
@@ -51,10 +51,10 @@ export default function Home() {
    
     const orderDetails = selectedOption
     .map((item) => `${item.name} - ${item.price}`)
-    .join("\n"); // Format as a list
+    .join("\n");
 
-  const totalPrice = selectedOption
-    .reduce((acc, curr) => acc + parseFloat(curr.price.slice(1)), 0)
+    const totalPrice = selectedOption
+    .reduce((acc, curr) => acc + parseFloat(curr.price.replace("₹", "")), 0)
     .toFixed(2);
 
   // Prepare the templateParams object
@@ -62,8 +62,8 @@ export default function Home() {
     customer_name: customerDetails.name,
     customer_email: customerDetails.email,
     customer_phone: customerDetails.phone,
-    order_details: orderDetails, // List of items
-    total_price: `$${totalPrice}`, // Total amount
+    order_details: orderDetails,
+    total_price: `₹${totalPrice}`,
   };
 
 
