@@ -49,13 +49,37 @@ export default function Home() {
     }
     
    
-    const orderDetails = selectedOption
+   /* const orderDetails = selectedOption
     .map((item) => `${item.name} - ${item.price}`)
     .join("\n");
 
     const totalPrice = selectedOption
     .reduce((acc, curr) => acc + parseFloat(curr.price.replace("₹", "")), 0)
     .toFixed(2);
+*/const handleAddToCart = () => {
+  if (selectedOption.length === 0) {
+    alert("Please select food before adding to the cart.");
+    return;
+  }
+  
+  setCart([...cart, ...selectedOption]); // 🛒 Add selected food to cart
+  setSelectedOption([]); // Clear current selection
+  setSelectedFood(null);
+  alert("Added to cart successfully!");
+};
+
+const handlePlaceOrder = (e) => {
+  e.preventDefault();
+  
+  const orderItems = cart.length > 0 ? cart : selectedOption;
+  if (orderItems.length === 0) {
+    alert("Your cart is empty! Please add items.");
+    return;
+  }
+
+  const orderDetails = orderItems.map((item) => `${item.name} - ${item.price}`).join("\n");
+  const totalPrice = orderItems.reduce((acc, curr) => acc + parseFloat(curr.price.replace("₹", "")), 0).toFixed(2);
+
 
   // Prepare the templateParams object
   const templateParams = {
