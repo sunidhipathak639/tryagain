@@ -178,7 +178,7 @@ export default function Home() {
       <div className={styles.totalPriceContainer}>
         <h3>Total Price:</h3>
         <p>
-          $
+        ₹
           {selectedOption
             .reduce((acc, curr) => acc + parseFloat(curr.price.slice(1)), 0)
             .toFixed(2)}
