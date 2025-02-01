@@ -66,7 +66,7 @@ export default function Home() {
   setSelectedOption([]); // Clear current selection
   setSelectedFood(null);
   alert("Added to cart successfully!");
-};
+};}
 
 const handlePlaceOrder = (e) => {
   e.preventDefault();
@@ -289,4 +289,4 @@ const handlePlaceOrder = (e) => {
       </footer>
     </div>
   );
-        }}
+        }
