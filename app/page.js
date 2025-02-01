@@ -289,4 +289,4 @@ const handlePlaceOrder = (e) => {
       </footer>
     </div>
   );
-}
+        }}
